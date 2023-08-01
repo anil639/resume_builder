@@ -35,7 +35,7 @@ function NavigationBar(props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item}>
+          <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
               <Link to={`/${item}`}>
                 <ListItemText primary={item} />
@@ -67,11 +67,11 @@ function NavigationBar(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}
           >
             Almabetter
           </Typography>
-          <Box sx={{ display: "flex", xs: "none", sm: "block" }}>
+          <Box sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}>
             {navItems.map((item) => (
               <Link style={{ textDecoration: "none" }} to={`/${item}`}>
                 <Typography marginRight="25px">{item}</Typography>
