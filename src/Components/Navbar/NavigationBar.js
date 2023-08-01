@@ -35,7 +35,7 @@ function NavigationBar(props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item}>
             <ListItemButton sx={{ textAlign: "center" }}>
               <Link to={`/${item}`}>
                 <ListItemText primary={item} />
