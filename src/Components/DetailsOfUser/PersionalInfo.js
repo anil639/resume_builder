@@ -1,7 +1,14 @@
 import { React, useState } from "react";
-import { Paper, Grid, Typography, Avatar } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import {
+  Paper,
+  Grid,
+  Typography,
+  Avatar,
+  TextField,
+  Button,
+} from "@mui/material";
+import { useForm } from "react-hook-form";
+
 const PersionalInfo = () => {
   const [image, setImage] = useState(null);
 
@@ -16,7 +23,14 @@ const PersionalInfo = () => {
       reader.readAsDataURL(file);
     }
   };
-
+  // Initialize the form using useForm hook from react-hook-form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  // Function to handle form submission
+  const onSubmit = (data) => console.log(data);
   return (
     <div>
       <Paper
@@ -30,7 +44,7 @@ const PersionalInfo = () => {
           marginTop: "25px",
         }}
       >
-        <Grid container>
+        <Grid container spacing={2}>
           <Grid xs={12} md={12}>
             <Avatar sx={{ height: "150px", width: "150px" }} src={image} />
             <input
@@ -46,7 +60,122 @@ const PersionalInfo = () => {
               </Typography>
             </label>
           </Grid>
-          <Grid xs={12} md={6}></Grid>
+
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <TextField
+                sx={{ marginTop: "30px", marginRight: "50px" }}
+                label="First Name"
+                {...register("firstName", {
+                  required: "First name is required", // Validation rule for the field
+                })}
+                error={Boolean(errors.firstName)}
+                helperText={errors.firstName?.message}
+              />
+              <TextField
+                sx={{ marginTop: "30px" }}
+                label="Last Name"
+                {...register("lastName", {
+                  required: "Last name is required", // Validation rule for the field
+                })}
+                error={Boolean(errors.lastName)}
+                helperText={errors.lastName?.message}
+              />
+            </div>
+            <div>
+              <TextField
+                sx={{ marginTop: "30px", marginRight: "50px" }}
+                label="Email"
+                {...register("email", {
+                  required: "Email is required", // Validation rule for the field
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Invalid email address", // Validation rule for email format
+                  },
+                })}
+                error={Boolean(errors.email)}
+                helperText={errors.email?.message}
+              />
+              <TextField
+                sx={{ marginTop: "30px" }}
+                label="Mobile"
+                {...register("mobile", {
+                  required: "Mobile is required", // Validation rule for the field
+                  pattern: {
+                    value: /^(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/,
+                    message: "Invalid Mobile Number", // Validation rule for email format
+                  },
+                })}
+                error={Boolean(errors.email)}
+                helperText={errors.email?.message}
+              />
+            </div>
+            <div>
+              <TextField
+                sx={{ marginTop: "30px" }}
+                label="Address"
+                fullWidth
+                {...register("address", {
+                  required: "Address is required", // Validation rule for the field
+                })}
+                error={Boolean(errors.address)}
+                helperText={errors.address?.message}
+              />
+            </div>
+            <div>
+              <TextField
+                sx={{ marginTop: "30px", marginRight: "50px" }}
+                label="City"
+                {...register("city", {
+                  required: "City is required", // Validation rule for the field
+                })}
+                error={Boolean(errors.city)}
+                helperText={errors.city?.message}
+              />
+              <TextField
+                sx={{ marginTop: "30px" }}
+                label="State"
+                {...register("state", {
+                  required: "State is required", // Validation rule for the field
+                })}
+                error={Boolean(errors.state)}
+                helperText={errors.state?.message}
+              />
+            </div>
+            <div>
+              <TextField
+                sx={{ marginTop: "30px" }}
+                label="Postal Code"
+                {...register("postalCode", {
+                  required: "Postal code is required", // Validation rule for the field
+                })}
+                error={Boolean(errors.postalCode)}
+                helperText={errors.postalCode?.message}
+              />
+            </div>
+            <div>
+              <TextField
+                sx={{ marginTop: "30px" }}
+                label="Objective"
+                fullWidth
+                multiline
+                rows={4}
+                {...register("objective", {
+                  required: "Objective is required", // Validation rule for the field
+                })}
+                error={Boolean(errors.objective)}
+                helperText={errors.objective?.message}
+              />
+            </div>
+            <div style={{ marginTop: "25px", float: "right" }}>
+              <Button variant="outlined" sx={{ marginRight: "10px" }}>
+                Back
+              </Button>
+              <Button type="submit" variant="contained" color="primary">
+                Next
+              </Button>
+            </div>
+          </form>
         </Grid>
       </Paper>
     </div>

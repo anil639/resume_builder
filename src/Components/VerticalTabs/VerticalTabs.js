@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs, Tab, Box, Divider } from "@mui/material";
 const VerticalTabs = () => {
   const [value, setValue] = React.useState(0);
-
+  console.log(value);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
