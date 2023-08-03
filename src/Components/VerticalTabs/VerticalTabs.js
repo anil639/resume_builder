@@ -1,12 +1,7 @@
 import React from "react";
 import { Tabs, Tab, Box, Divider } from "@mui/material";
-const VerticalTabs = () => {
-  const [value, setValue] = React.useState(0);
-  console.log(value);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
+const VerticalTabs = ({ activeTab, handleChange }) => {
   return (
     <div>
       <Box
@@ -16,12 +11,12 @@ const VerticalTabs = () => {
         borderRadius="10px"
       >
         <Tabs
-          value={value}
+          value={activeTab}
           onChange={handleChange}
           variant="scrollable"
           scrollButtons={false}
-          aria-label="scrollable prevent tabs example"
           orientation="vertical"
+          indicator="false"
         >
           <Tab style={{ alignItems: "center" }} label="Personal Info" />
           <Divider />
