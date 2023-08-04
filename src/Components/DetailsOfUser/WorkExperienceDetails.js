@@ -1,9 +1,128 @@
 import React from "react";
-
+import { useForm, Controller, useFieldArray } from "react-hook-form";
+import {
+  Paper,
+  Typography,
+  Divider,
+  Grid,
+  TextField,
+  Button,
+} from "@mui/material";
 const WorkExperienceDetails = () => {
+  // Initialize the form using useForm hook from react-hook-form
+  const { control, handleSubmit, register } = useForm({
+    defaultValues: {
+      works: [{ company: "", position: "", startYear: "", endYear: "" }],
+    },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "works",
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div>
-      <h1>workExp page</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Paper
+          sx={{
+            width: "100%",
+            height: "100%",
+            padding: "20mm",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "25px",
+          }}
+        >
+          <Grid container>
+            <Grid item xs={12}>
+              <Typography variant="h5" marginBottom="25px">
+                Work Experience
+              </Typography>
+              <Divider />
+            </Grid>
+            {fields.map((work, index) => (
+              <Grid container spacing={2} key={work.id}>
+                <Grid item xs={12}>
+                  <Typography variant="h6">
+                    Work Experience {index + 1}
+                  </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    label="Company"
+                    variant="outlined"
+                    {...register(`works.${index}.company`)}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    label="Position"
+                    variant="outlined"
+                    {...register(`works.${index}.position`)}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    label="Start Year"
+                    variant="outlined"
+                    type="number"
+                    {...register(`works.${index}.startYear`)}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    label="End Year"
+                    variant="outlined"
+                    type="number"
+                    {...register(`works.${index}.endYear`)}
+                    fullWidth
+                  />
+                </Grid>
+              </Grid>
+            ))}
+            <Button
+              onClick={() =>
+                append({
+                  company: "",
+                  position: "",
+                  startYear: "",
+                  endYear: "",
+                })
+              }
+              variant="text"
+              color="primary"
+              sx={{
+                textTransform: "capitalize",
+                marginLeft: "Auto",
+                marginRight: "auto",
+                marginTop: "15px",
+              }}
+            >
+              Add New
+            </Button>
+            <Divider style={{ width: "100%" }} />
+            <div style={{ marginTop: "25px", marginLeft: "auto" }}>
+              <Grid item xs={12}>
+                <Button variant="outlined" sx={{ marginRight: "10px" }}>
+                  Back
+                </Button>
+                <Button type="submit" variant="contained" color="primary">
+                  Next
+                </Button>
+              </Grid>
+            </div>
+          </Grid>
+        </Paper>
+      </form>
     </div>
   );
 };
