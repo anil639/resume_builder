@@ -6,6 +6,7 @@ import {
   Avatar,
   TextField,
   Button,
+  Divider,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 
@@ -103,7 +104,7 @@ const PersionalInfo = () => {
                   required: "Mobile is required", // Validation rule for the field
                   pattern: {
                     value: /^(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/,
-                    message: "Invalid Mobile Number", // Validation rule for email format
+                    message: "Invalid Mobile Number", // Validation rule for number format
                   },
                 })}
                 error={Boolean(errors.email)}
@@ -167,6 +168,7 @@ const PersionalInfo = () => {
                 helperText={errors.objective?.message}
               />
             </div>
+            <Divider style={{ width: "100%" }} />
             <div style={{ marginTop: "25px", float: "right" }}>
               <Button variant="outlined" sx={{ marginRight: "10px" }}>
                 Back
