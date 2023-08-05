@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useForm, useFieldArray } from "react-hook-form";
 
-const KeySkillsDetails = () => {
+const KeySkillsDetails = ({ handlePreviousTab }) => {
   const {
     control,
     handleSubmit,
@@ -93,11 +93,15 @@ const KeySkillsDetails = () => {
             </Grid>
             <div style={{ marginTop: "25px", marginLeft: "auto" }}>
               <Grid item xs={12}>
-                <Button variant="outlined" sx={{ marginRight: "10px" }}>
+                <Button
+                  variant="outlined"
+                  sx={{ marginRight: "10px" }}
+                  onClick={handlePreviousTab}
+                >
                   Back
                 </Button>
                 <Button type="submit" variant="contained" color="primary">
-                  Next
+                  Preview
                 </Button>
               </Grid>
             </div>

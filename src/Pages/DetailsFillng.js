@@ -9,6 +9,13 @@ const DetailsFillng = () => {
   const handleChange = (e, newValue) => {
     setActiveTab(newValue);
   };
+  // handle button
+  const handleNextTab = () => {
+    setActiveTab((nextTab) => Math.min(nextTab + 2, 8));
+  };
+  const handlePreviousTab = () => {
+    setActiveTab((prevTab) => Math.max(prevTab - 2, 0));
+  };
 
   return (
     <div>
@@ -18,7 +25,11 @@ const DetailsFillng = () => {
             <VerticalTabs activeTab={activeTab} handleChange={handleChange} />
           </Grid>
           <Grid item xs={12} md={8}>
-            <TabContent activeTab={activeTab} />
+            <TabContent
+              activeTab={activeTab}
+              handleNextTab={handleNextTab}
+              handlePreviousTab={handlePreviousTab}
+            />
           </Grid>
         </Grid>
       </Container>

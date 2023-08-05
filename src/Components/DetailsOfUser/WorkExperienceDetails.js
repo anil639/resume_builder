@@ -8,7 +8,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-const WorkExperienceDetails = () => {
+const WorkExperienceDetails = ({ handleNextTab, handlePreviousTab }) => {
   // Initialize the form using useForm hook from react-hook-form
   const { control, handleSubmit, register } = useForm({
     defaultValues: {
@@ -22,6 +22,7 @@ const WorkExperienceDetails = () => {
   });
 
   const onSubmit = (data) => {
+    handleNextTab();
     console.log(data);
   };
 
@@ -112,7 +113,11 @@ const WorkExperienceDetails = () => {
             <Divider style={{ width: "100%" }} />
             <div style={{ marginTop: "25px", marginLeft: "auto" }}>
               <Grid item xs={12}>
-                <Button variant="outlined" sx={{ marginRight: "10px" }}>
+                <Button
+                  variant="outlined"
+                  sx={{ marginRight: "10px" }}
+                  onClick={handlePreviousTab}
+                >
                   Back
                 </Button>
                 <Button type="submit" variant="contained" color="primary">

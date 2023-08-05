@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 
-const EducationDetails = () => {
+const EducationDetails = ({ handleNextTab, handlePreviousTab }) => {
   // Initialize the form using useForm hook from react-hook-form
   const {
     handleSubmit,
@@ -18,6 +18,7 @@ const EducationDetails = () => {
   } = useForm();
   // Function to handle form submission
   const onSubmit = (data) => {
+    handleNextTab();
     console.log(data);
   };
 
@@ -127,7 +128,11 @@ const EducationDetails = () => {
             <Divider />
             <div style={{ marginTop: "25px", marginLeft: "auto" }}>
               <Grid item xs={12}>
-                <Button variant="outlined" sx={{ marginRight: "10px" }}>
+                <Button
+                  variant="outlined"
+                  sx={{ marginRight: "10px" }}
+                  onClick={handlePreviousTab}
+                >
                   Back
                 </Button>
                 <Button type="submit" variant="contained" color="primary">

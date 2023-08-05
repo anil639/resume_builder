@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 
-const PersionalInfo = () => {
+const PersionalInfo = ({ handleNextTab }) => {
   const [image, setImage] = useState(null);
 
   //This function is called when user select a img
@@ -31,7 +31,11 @@ const PersionalInfo = () => {
     formState: { errors },
   } = useForm();
   // Function to handle form submission
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    handleNextTab();
+    console.log(data);
+  };
+
   return (
     <div>
       <Paper
@@ -45,7 +49,7 @@ const PersionalInfo = () => {
           marginTop: "25px",
         }}
       >
-        <Grid container spacing={2}>
+        <Grid container>
           <Grid xs={12} md={12}>
             <Avatar sx={{ height: "150px", width: "150px" }} src={image} />
             <input
@@ -103,12 +107,12 @@ const PersionalInfo = () => {
                 {...register("mobile", {
                   required: "Mobile is required", // Validation rule for the field
                   pattern: {
-                    value: /^(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/,
+                    value: /^[0-9]{10}$/,
                     message: "Invalid Mobile Number", // Validation rule for number format
                   },
                 })}
-                error={Boolean(errors.email)}
-                helperText={errors.email?.message}
+                error={Boolean(errors.mobile)}
+                helperText={errors.mobile?.message}
               />
             </div>
             <div>
@@ -173,7 +177,7 @@ const PersionalInfo = () => {
               <Button variant="outlined" sx={{ marginRight: "10px" }}>
                 Back
               </Button>
-              <Button type="submit" variant="contained" color="primary">
+              <Button variant="contained" color="primary" type="submit">
                 Next
               </Button>
             </div>
