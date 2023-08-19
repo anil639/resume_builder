@@ -8,6 +8,10 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+
+import { useDispatch } from "react-redux";
+import updateWork from "../../Redux/Actions/UpdateWork";
+
 const WorkExperienceDetails = ({ handleNextTab, handlePreviousTab }) => {
   // Initialize the form using useForm hook from react-hook-form
   const { control, handleSubmit, register } = useForm({
@@ -20,10 +24,12 @@ const WorkExperienceDetails = ({ handleNextTab, handlePreviousTab }) => {
     control,
     name: "works",
   });
-
-  const onSubmit = (data) => {
+  //dispatching data to store
+  const dispatch = useDispatch();
+  const onSubmit = (workdExpData) => {
+    dispatch(updateWork(workdExpData));
     handleNextTab();
-    console.log(data);
+    console.log(workdExpData);
   };
 
   return (
@@ -71,19 +77,20 @@ const WorkExperienceDetails = ({ handleNextTab, handlePreviousTab }) => {
                   />
                 </Grid>
                 <Grid item xs={6}>
+                  <label>StartYear</label>
                   <TextField
-                    label="Start Year"
+                    // label="Start Year"
                     variant="outlined"
-                    type="number"
+                    type="date"
                     {...register(`works.${index}.startYear`)}
                     fullWidth
                   />
                 </Grid>
                 <Grid item xs={6}>
+                  <label>EndYear</label>
                   <TextField
-                    label="End Year"
                     variant="outlined"
-                    type="number"
+                    type="date"
                     {...register(`works.${index}.endYear`)}
                     fullWidth
                   />

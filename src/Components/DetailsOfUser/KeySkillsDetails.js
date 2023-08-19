@@ -8,6 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { useForm, useFieldArray } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const KeySkillsDetails = ({ handlePreviousTab }) => {
   const {
@@ -29,7 +30,9 @@ const KeySkillsDetails = ({ handlePreviousTab }) => {
     control,
     name: "skills",
   });
+  const navigate = useNavigate();
   const onSubmit = (data) => {
+    navigate("/Preview");
     console.log(data);
   };
 

@@ -69,7 +69,9 @@ function NavigationBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}
           >
-            Almabetter
+            <Link to="/" style={{ textDecoration: "none" }}>
+              Almabetter
+            </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}>
             {navItems.map((item) => (

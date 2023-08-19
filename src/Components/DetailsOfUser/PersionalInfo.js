@@ -9,6 +9,8 @@ import {
   Divider,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import updateInfo from "../../Redux/Actions/PersonalInfoAction";
 
 const PersionalInfo = ({ handleNextTab }) => {
   const [image, setImage] = useState(null);
@@ -30,10 +32,17 @@ const PersionalInfo = ({ handleNextTab }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  // let input = useSelector((state) => state.Update_info);
+  // console.log(input);
+  //dispatching data to redux store
+  const dispatch = useDispatch();
+
   // Function to handle form submission
-  const onSubmit = (data) => {
+  const onSubmit = (personalInfoData) => {
+    dispatch(updateInfo(personalInfoData));
     handleNextTab();
-    console.log(data);
+    let x = personalInfoData;
+    console.log(x);
   };
 
   return (
