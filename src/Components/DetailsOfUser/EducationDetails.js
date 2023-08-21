@@ -8,6 +8,8 @@ import {
   Button,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import updateEducation from "../../Redux/Actions/UpdateEducation";
 
 const EducationDetails = ({ handleNextTab, handlePreviousTab }) => {
   // Initialize the form using useForm hook from react-hook-form
@@ -16,10 +18,13 @@ const EducationDetails = ({ handleNextTab, handlePreviousTab }) => {
     register,
     formState: { errors },
   } = useForm();
+  //dispatching data to redux store
+  const dispatch = useDispatch();
   // Function to handle form submission
-  const onSubmit = (data) => {
+  const onSubmit = (educationData) => {
+    dispatch(updateEducation(educationData));
     handleNextTab();
-    console.log(data);
+    console.log(educationData);
   };
 
   return (

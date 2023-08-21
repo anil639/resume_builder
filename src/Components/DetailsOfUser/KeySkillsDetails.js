@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import { useForm, useFieldArray } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import updateSkill from "../../Redux/Actions/UpdateSkill";
 
 const KeySkillsDetails = ({ handlePreviousTab }) => {
   const {
@@ -30,10 +32,13 @@ const KeySkillsDetails = ({ handlePreviousTab }) => {
     control,
     name: "skills",
   });
-  const navigate = useNavigate();
-  const onSubmit = (data) => {
+  const navigate = useNavigate(); //for navigation to previewPage
+  //dispatching data to redux store
+  const dispatch = useDispatch();
+  const onSubmit = (skillData) => {
+    dispatch(updateSkill(skillData));
     navigate("/Preview");
-    console.log(data);
+    console.log(skillData);
   };
 
   return (
