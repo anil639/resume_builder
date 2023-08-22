@@ -18,22 +18,18 @@ const PersionalInfo = ({ handleNextTab }) => {
   //This function is called when user select a img
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+    setImage(URL.createObjectURL(file));
+    setValue("image", file);
   };
+
   // Initialize the form using useForm hook from react-hook-form
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
-  // let input = useSelector((state) => state.Update_info);
-  // console.log(input);
+
   //dispatching data to redux store
   const dispatch = useDispatch();
 
@@ -58,24 +54,29 @@ const PersionalInfo = ({ handleNextTab }) => {
           marginTop: "25px",
         }}
       >
-        <Grid container>
-          <Grid xs={12} md={12}>
-            <Avatar sx={{ height: "150px", width: "150px" }} src={image} />
-            <input
-              accept="image/*"
-              id="avatar-upload"
-              type="file"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-            />
-            <label htmlFor="avatar-upload" style={{ position: "absolute" }}>
-              <Typography color="primary" marginLeft="5px">
-                change Profile Photo
-              </Typography>
-            </label>
-          </Grid>
-
+        <Grid Container>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <Grid xs={12} md={12}>
+              <Avatar
+                sx={{ height: "150px", width: "150px" }}
+                src={image}
+                alt="Image"
+              />
+              <input
+                id="avatar-upload"
+                type="file"
+                accept="image/*"
+                {...register("image")}
+                onChange={handleImageChange}
+                style={{ display: "none" }}
+                defaultValue={image}
+              />
+              <label htmlFor="avatar-upload" style={{ position: "absolute" }}>
+                <Typography color="primary" marginLeft="5px">
+                  change Profile Photo
+                </Typography>
+              </label>
+            </Grid>
             <div>
               <TextField
                 sx={{ marginTop: "30px", marginRight: "50px" }}
