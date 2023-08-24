@@ -1,5 +1,14 @@
 import { React, useState, useEffect, useRef } from "react";
-import { Container, Grid, TextField, Button } from "@mui/material";
+import {
+  Container,
+  Grid,
+  TextField,
+  Button,
+  Box,
+  Modal,
+  Typography,
+} from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useSelector } from "react-redux";
 import {
   TEMPLATE_ONE,
@@ -17,6 +26,7 @@ import { useNavigate } from "react-router-dom";
 
 const Preview = () => {
   const [templateName, setTemplateName] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const resumePreviewRef = useRef(null);
 
   useEffect(() => {
@@ -29,19 +39,28 @@ const Preview = () => {
   const handleTemplateName = (e) => {
     const name = e.target.value;
     setTemplateName(name);
-    // save template to local storage
+    // save template name to local storage
     localStorage.setItem("templateName", name);
   };
 
   // to save the PDF with the template name
   const handleSavePdf = async () => {
     const doc = new jsPDF();
+    console.log("resumePreviewRef.current:", resumePreviewRef.current);
     const canvas = await html2canvas(resumePreviewRef.current); //Converting it to an image using html2canvas
     const imageData = canvas.toDataURL("image/jpeg"); //change to formats
     const pdfWidth = doc.internal.pageSize.getWidth();
     const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
     doc.addImage(imageData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+    const pdf = doc.output("blob");
+
+    localStorage.setItem(`${templateName}.pdf`, URL.createObjectURL(pdf));//saving blob url in local storage
     doc.save(`${templateName}.pdf`);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   const navigate = useNavigate();
@@ -53,7 +72,7 @@ const Preview = () => {
       <Container>
         <h1>Resume Preview</h1>
         <Grid container>
-          <Grid xs={8}>
+          <Grid xs={8} ref={resumePreviewRef}>
             {Template == TEMPLATE_ONE && <TemplateOne />}
             {Template == TEMPLATE_TWO && <TemplateTwo />}
             {Template == TEMPLATE_THREE && <TemplateThree />}
@@ -63,9 +82,7 @@ const Preview = () => {
           <Grid xs={4}>
             <h1>Create File Name</h1>
             <TextField
-              label="Template Name"
               variant="outlined"
-              value={templateName}
               onChange={handleTemplateName}
             ></TextField>
             <div style={{ marginTop: "15px" }}>
@@ -83,6 +100,27 @@ const Preview = () => {
               >
                 Save
               </Button>
+              <Modal open={isModalOpen} onClose={handleCloseModal}>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    bgcolor: "white",
+                    width: 400,
+                    border: "none",
+                    boxShadow: 24,
+                    p: 4,
+                    textAlign: "center",
+                  }}
+                >
+                  <CheckCircleIcon color="primary" />
+                  <Typography variant="body1">
+                    Your Resume has been successfully saved.
+                  </Typography>
+                </Box>
+              </Modal>
             </div>
           </Grid>
         </Grid>
