@@ -46,7 +46,6 @@ const Preview = () => {
   // to save the PDF with the template name
   const handleSavePdf = async () => {
     const doc = new jsPDF();
-    console.log("resumePreviewRef.current:", resumePreviewRef.current);
     const canvas = await html2canvas(resumePreviewRef.current); //Converting it to an image using html2canvas
     const imageData = canvas.toDataURL("image/jpeg"); //change to formats
     const pdfWidth = doc.internal.pageSize.getWidth();
@@ -54,7 +53,7 @@ const Preview = () => {
     doc.addImage(imageData, "JPEG", 0, 0, pdfWidth, pdfHeight);
     const pdf = doc.output("blob");
 
-    localStorage.setItem(`${templateName}.pdf`, URL.createObjectURL(pdf));//saving blob url in local storage
+    localStorage.setItem(`${templateName}.pdf`, URL.createObjectURL(pdf)); //saving blob url in local storage
     doc.save(`${templateName}.pdf`);
     setIsModalOpen(true);
   };
