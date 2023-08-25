@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/resume_builder/static/css/main.073c9b0a.css",
+    "main.js": "/resume_builder/static/js/main.fcb16dfe.js",
+    "static/js/703.6456485d.chunk.js": "/resume_builder/static/js/703.6456485d.chunk.js",
+    "static/js/598.12819943.chunk.js": "/resume_builder/static/js/598.12819943.chunk.js",
+    "static/js/787.61b62c3a.chunk.js": "/resume_builder/static/js/787.61b62c3a.chunk.js",
+    "static/media/TemplateThree_img.png": "/resume_builder/static/media/TemplateThree_img.97a456b5466fe5a7d00f.png",
+    "static/media/TemplateOne_img.png": "/resume_builder/static/media/TemplateOne_img.f8e772cb65901931ac4a.png",
+    "static/media/TemplateFour_img.png": "/resume_builder/static/media/TemplateFour_img.0bb922c5ebcbf2b3820e.png",
+    "static/media/TemplateTwo_img.png": "/resume_builder/static/media/TemplateTwo_img.bd3d55ee74bea7cf2a0b.png",
+    "index.html": "/resume_builder/index.html",
+    "main.073c9b0a.css.map": "/resume_builder/static/css/main.073c9b0a.css.map",
+    "main.fcb16dfe.js.map": "/resume_builder/static/js/main.fcb16dfe.js.map",
+    "703.6456485d.chunk.js.map": "/resume_builder/static/js/703.6456485d.chunk.js.map",
+    "598.12819943.chunk.js.map": "/resume_builder/static/js/598.12819943.chunk.js.map",
+    "787.61b62c3a.chunk.js.map": "/resume_builder/static/js/787.61b62c3a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.fcb16dfe.js"
+  ]
+}
