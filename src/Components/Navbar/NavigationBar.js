@@ -30,14 +30,21 @@ function NavigationBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Almabetter
+        <span
+          style={{
+            fontWeight: "bold",
+            fontFamily: "cursive",
+          }}
+        >
+          Resume Builder
+        </span>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <Link to={`/${item}`}>
+              <Link to={`/${item}`} style={{ textDecoration: "none" }}>
                 <ListItemText primary={item} />
               </Link>
             </ListItemButton>
@@ -62,15 +69,30 @@ function NavigationBar(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon />{" "}
+            <span
+              style={{
+                fontWeight: "bold",
+                fontFamily: "cursive",
+              }}
+            >
+              Resume Builder
+            </span>
           </IconButton>
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}
           >
-            <Link to="/" style={{ textDecoration: "none" }}>
-              Almabetter
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                fontWeight: "bold",
+                fontFamily: "cursive",
+              }}
+            >
+              Resume Builder
             </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "flex", md: "flex" } }}>

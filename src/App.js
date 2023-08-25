@@ -7,6 +7,7 @@ import DetailsFillng from "./Pages/DetailsFillng";
 import Preview from "./Components/Preview/Preview";
 import MyResumes from "./Pages/MyResumes";
 import Home from "./Pages/Home";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/DetailsFillng" element={<DetailsFillng />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
