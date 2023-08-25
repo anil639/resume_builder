@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Button } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 const MyResumes = () => {
   const pdfKeys = Object.keys(localStorage);
   const styles = {
@@ -18,9 +18,11 @@ const MyResumes = () => {
       border: "1px solid #ccc",
     },
   };
+  const navigate = useNavigate();
   const clearLocalStorage = () => {
     localStorage.clear();
-    window.location.reload(); //for refreshing the page after clearing the local storage data
+    navigate("/ResumeTemplates");
+    // window.location.reload(); //for refreshing the page after clearing the local storage data
   };
   return (
     <div>
