@@ -71,14 +71,14 @@ const Preview = () => {
       <Container>
         <h1>Resume Preview</h1>
         <Grid container>
-          <Grid xs={8} ref={resumePreviewRef}>
+          <Grid xs={12} md={8} ref={resumePreviewRef}>
             {Template == TEMPLATE_ONE && <TemplateOne />}
             {Template == TEMPLATE_TWO && <TemplateTwo />}
             {Template == TEMPLATE_THREE && <TemplateThree />}
             {Template == TEMPLATE_FOUR && <TemplateFour />}
           </Grid>
 
-          <Grid xs={4}>
+          <Grid xs={12} md={4}>
             <h1>Create File Name</h1>
             <TextField
               variant="outlined"

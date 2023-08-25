@@ -33,7 +33,7 @@ const EducationDetails = ({ handleNextTab, handlePreviousTab }) => {
         <Paper
           elevation={3}
           sx={{
-            width: "80%",
+            width: "100%",
             height: "100%",
             padding: "20mm",
             display: "flex",
@@ -42,15 +42,14 @@ const EducationDetails = ({ handleNextTab, handlePreviousTab }) => {
             marginTop: "25px",
           }}
         >
-          <Grid container spacing={2}>
+          <Grid container>
             <Grid xs={12} md={12}>
               <Typography variant="h5" marginBottom="25px">
                 Education Details
               </Typography>
               <Divider />
             </Grid>
-
-            <Grid item xs={12}>
+            <Grid item xs={12} md={12}>
               <Typography variant="subtitle1">Education Type</Typography>
               {/* Type Input */}
               <TextField
@@ -59,7 +58,7 @@ const EducationDetails = ({ handleNextTab, handlePreviousTab }) => {
                 variant="outlined"
                 error={!!errors.type}
                 helperText={errors.type ? errors.type.message : ""}
-                sx={{ marginBottom: "25px", width: "50%" }}
+                sx={{ marginBottom: "25px", width: "100%" }}
               />
             </Grid>
             <div>
