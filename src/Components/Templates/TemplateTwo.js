@@ -94,10 +94,16 @@ const TemplateTwo = () => {
             <Grid xs={8}>
               {UpdateWork.map((work, index) => (
                 <div key={index}>
-                  <p>Company: {work.company}</p>
-                  <p>Position: {work.position}</p>
-                  <p>Start Year: {work.startYear}</p>
-                  <p>End Year: {work.endYear}</p>
+                  <Typography variant="p">Company: {work.company}</Typography>
+                  <br />
+                  <Typography variant="p">Position: {work.position}</Typography>
+                  <br />
+                  <Typography variant="p">
+                    Start Year: {work.startYear}
+                  </Typography>
+                  <br />
+                  <Typography variant="p">End Year: {work.endYear}</Typography>
+                  <br />
                 </div>
               ))}
             </Grid>
