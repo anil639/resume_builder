@@ -10,7 +10,7 @@ import store from "./Redux/Store/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/resume_builder">
       <Provider store={store}>
         <App />
       </Provider>

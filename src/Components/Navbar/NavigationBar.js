@@ -85,7 +85,7 @@ function NavigationBar(props) {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}
           >
             <Link
-              to="/resume_builder"
+              to="/"
               style={{
                 textDecoration: "none",
                 fontWeight: "bold",

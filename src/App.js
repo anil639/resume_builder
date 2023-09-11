@@ -14,7 +14,7 @@ function App() {
     <div>
       <NavigationBar />
       <Routes>
-        <Route path="/resume_builder" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Preview" element={<Preview />} />
         <Route path="/ResumeTemplates" element={<ResumeTemplates />} />
