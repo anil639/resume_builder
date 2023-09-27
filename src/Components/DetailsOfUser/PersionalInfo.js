@@ -8,6 +8,7 @@ import {
   Button,
   Divider,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import updateInfo from "../../Redux/Actions/PersonalInfoAction";
@@ -184,9 +185,11 @@ const PersionalInfo = ({ handleNextTab }) => {
             </div>
             <Divider style={{ width: "100%" }} />
             <div style={{ marginTop: "25px", float: "right" }}>
-              <Button variant="outlined" sx={{ marginRight: "10px" }}>
-                Back
-              </Button>
+              <Link to="/ResumeTemplates">
+                <Button variant="outlined" sx={{ marginRight: "10px" }}>
+                  Back
+                </Button>
+              </Link>
               <Button variant="contained" color="primary" type="submit">
                 Next
               </Button>
