@@ -28,3 +28,13 @@ The Resume Builder React Project is a dynamic and user-friendly web application 
 - JsPDF Library
 - React router
 - html2canvas
+- Redux
+- React-redux
+
+## Website Link
+
+- https://anil639.github.io/resume_builder/
+
+## Video Link
+
+-https://www.youtube.com/watch?v=ElIuzWj1LQs
