@@ -37,4 +37,4 @@ The Resume Builder React Project is a dynamic and user-friendly web application 
 
 ## Video Link
 
--https://www.youtube.com/watch?v=ElIuzWj1LQs
+- https://www.youtube.com/watch?v=ElIuzWj1LQs

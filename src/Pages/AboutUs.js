@@ -40,7 +40,7 @@ const AboutUs = () => {
             <br />
             <Typography variant="p">
               Build your winning resume today and take charge of your career
-              with ResumeXpert!
+              with ResumeBuilder!
             </Typography>
           </Grid>
           <Grid item xs={12} md={4} sx={{ maxWidth: "100%", display: "flex" }}>
@@ -264,7 +264,7 @@ const AboutUs = () => {
             <a href="https://twitter.com/">
               <TwitterIcon color="primary" sx={{ marginRight: "35px" }} />
             </a>
-            <a href="mailto:anilkumarnayak639@gmail.com">
+            <a href="mailto:anilkumarnayak529@gmail.com">
               <EmailIcon color="warning" sx={{ marginRight: "35px" }} />
             </a>
           </Grid>
